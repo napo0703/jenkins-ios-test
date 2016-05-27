@@ -1,0 +1,18 @@
+general:
+  build_dir: Example
+
+machine:
+  timezone:
+    Asia/Tokyo
+  environment:
+    XCODE_SCHEME: ExampleTexts
+  xcode:
+    version: "7.1"
+dependencies:
+  override:
+    - bundle install
+    - pod install:
+        timeout: 300
+test:
+  override:
+    - xcodebuild test -scheme ExampleTests -workspace Example.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.0'
